@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Nullproof Luxury Web3xAI Design System */
+
+@layer base {
+  :root {
+    /* Dark luxury theme */
+    --background: 220 20% 8%;
+    --background-secondary: 220 25% 12%;
+    --foreground: 210 40% 98%;
+    
+    /* Glassmorphic elements */
+    --glass: 220 20% 15%;
+    --glass-border: 220 30% 25%;
+    --glass-foreground: 210 40% 95%;
+    
+    /* Primary brand colors - Purple/Blue gradient theme */
+    --primary: 250 84% 70%;
+    --primary-dark: 245 75% 45%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 250 100% 85%;
+    
+    /* Secondary colors */
+    --secondary: 220 25% 20%;
+    --secondary-foreground: 210 40% 95%;
+    
+    /* Accent colors */
+    --accent: 270 75% 65%;
+    --accent-foreground: 210 40% 98%;
+    
+    /* Muted colors */
+    --muted: 220 20% 18%;
+    --muted-foreground: 215 15% 65%;
+    
+    /* Interactive elements */
+    --border: 220 30% 25%;
+    --input: 220 25% 15%;
+    --ring: 250 84% 70%;
+    
+    /* Cards */
+    --card: 220 20% 12%;
+    --card-foreground: 210 40% 95%;
+    
+    /* Destructive */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Radius */
+    --radius: 1rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(250 84% 70%), hsl(270 75% 65%));
+    --gradient-dark: linear-gradient(135deg, hsl(220 20% 8%), hsl(220 25% 12%));
+    --gradient-glass: linear-gradient(135deg, hsl(220 20% 15% / 0.8), hsl(220 25% 20% / 0.6));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(250 84% 70% / 0.3);
+    --shadow-neumorphic: 
+      inset 0 1px 0 hsl(220 30% 25%),
+      inset 0 -1px 0 hsl(220 15% 10%),
+      0 4px 8px hsl(220 20% 5% / 0.5);
+    --shadow-glass: 
+      0 8px 32px hsl(220 20% 5% / 0.3),
+      inset 0 1px 0 hsl(220 30% 25% / 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-light;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: hsl(var(--background));
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(250 84% 70% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(270 75% 65% / 0.1) 0%, transparent 50%);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-light tracking-tight;
+  }
+  
+  p, span, div {
+    @apply opacity-90;
+  }
+}
+
+@layer components {
+  /* Glassmorphic card styles */
+  .glass-card {
+    background: hsl(var(--glass) / 0.5);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--glass-border) / 0.3);
+    box-shadow: var(--shadow-glass);
+  }
+  
+  /* Neumorphic button styles */
+  .neuro-button {
+    background: hsl(var(--secondary));
+    box-shadow: var(--shadow-neumorphic);
+    border: 1px solid hsl(var(--glass-border) / 0.5);
+    transition: var(--transition-smooth);
+  }
+  
+  .neuro-button:hover {
+    box-shadow: 
+      var(--shadow-neumorphic),
+      var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--glass-border));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
