@@ -1,73 +1,154 @@
-# Welcome to your Lovable project
+# 🚀 Nullproof
 
-## Project info
+**Nullproof** is a **ZK-powered decentralized identity agent** that classifies users as **Founders**, **Investors**, or **Contributors** — all while keeping their sensitive data private.
 
-**URL**: https://lovable.dev/projects/ad334c50-30b8-4d33-9727-255d029c435d
+Powered by AI/ML and Zero-Knowledge Proofs, Nullproof leverages both **on-chain** and **off-chain** signals to create **verifiable, privacy-preserving role credentials**.
 
-## How can I edit this code?
+> 🧠 *Prove who you are — without revealing how.*
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🔧 Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ad334c50-30b8-4d33-9727-255d029c435d) and start prompting.
+|      Layer       |      Stack & Tools         | 
+|------------------|----------------------------|
+| **Frontend**     | React + TypeScript + Vite  |
+| **AI/ML Model**  | Python + Flask             |
+| **Backend**      | Node.js + Express          |
+| **ZK Proofs**    | Circom + SnarkJS           |
+| **Blockchain**   | ethers.js + Infura/Alchemy |
+| **Identity**     | ethrDID                    |
+| **VC Storage**   | Ceramic (DID-based)        |
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## ⚙️ Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🔵 Frontend Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/nullproof.git
 
-Follow these steps:
+# 2. Navigate to the frontend
+cd nullproof/client
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 3. Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 4. Add environment variables
+touch .env
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+`.env`:
+```env
+VITE_GITHUB_CLIENT_ID=your_github_client_id
+VITE_GITHUB_SECRET_KEY=your_github_secret_key
+VITE_CERAMIC_KEY=your_ceramic_key
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+# 5. Start the dev server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 🟢 Backend Setup
 
-**Use GitHub Codespaces**
+```bash
+# 1. Navigate to the backend
+cd ../backend
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# 2. Install dependencies
+npm install
 
-## What technologies are used for this project?
+# 3. Add environment variables
+touch .env
+```
 
-This project is built with:
+`.env`:
+```env
+INFURA_KEY=your_infura_project_id
+ALCHEMY_KEY=your_alchemy_key
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_SECRET_KEY=your_github_secret_key
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+# 4. Run the server
+node index.js
+```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/ad334c50-30b8-4d33-9727-255d029c435d) and click on Share -> Publish.
+### 🤖 AI Model Setup (Flask API)
 
-## Can I connect a custom domain to my Lovable project?
+The machine learning model is written in Python and deployed using Flask. It analyzes:
 
-Yes, you can!
+- GitHub data: PRs, commits, issues
+- Blockchain data: token holdings, transaction volume, contract interactions
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Based on this data, the model generates a **role classification score**, which is used in the ZK proof.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+> 📍 **Note:** Instructions for running the ML model locally or deploying it to cloud platforms (like Hugging Face Spaces or Render) will be available in `/ml/README.md`.
+
+---
+
+### 🛡️ Zero-Knowledge Setup (Circom + SnarkJS)
+
+Nullproof uses Circom circuits and SnarkJS to:
+
+- Convert ML outputs into ZK-friendly inputs
+- Generate and verify zk-SNARK proofs
+- Prove role identity without exposing the raw score
+
+```bash
+# Example commands (inside zk/ directory)
+circom role_verification.circom --r1cs --wasm --sym
+snarkjs groth16 setup role_verification.r1cs powersOfTau28_hez_final_10.ptau role_verification.zkey
+snarkjs zkey export verificationkey role_verification.zkey verification_key.json
+```
+
+---
+
+## 🧠 How It Works
+
+1. **User connects wallet + GitHub**
+2. **Backend pulls user’s GitHub & on-chain metrics**
+3. **ML model predicts a role score**
+4. **ZK circuit generates a proof of role (no raw data exposed)**
+5. **User gets a verifiable, private role credential (VC + DID)**
+
+---
+
+## 🔮 Roadmap
+
+- ✅ GitHub + Wallet linking  
+- ✅ AI-powered role classification  
+- ✅ ZK circuit for private role proof  
+- 🚧 **On-chain verifier contract**  
+- 🚧 **Reputation layer (on-chain/off-chain)**  
+- 🚧 **DAO Integration**  
+- 🚧 **Premium Profiles**  
+- 🚧 **Solana Chain Support**  
+- 🚧 **AI Suggestions for Score Improvement**  
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from the community!
+
+- Submit feature requests
+- Report issues
+- Open PRs for improvements
+- Suggest integrations or DAO proposals
+
+> ⭐ Star the repo to support the project!
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
