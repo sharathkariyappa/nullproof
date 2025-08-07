@@ -8,25 +8,25 @@ const perks = [
     icon: Gift,
     title: 'Exclusive Airdrop',
     description: 'Get rewarded with early tokens and perks by securing your spot now.',
-    color: 'from-pink-500 to-rose-400',
+    // color: 'from-pink-500 to-rose-400',
   },
   {
     icon: Coins,
     title: 'Private Sale Access',
     description: 'Be the first to participate in limited private rounds before public launch.',
-    color: 'from-yellow-500 to-orange-400',
+    // color: 'from-yellow-500 to-orange-400',
   },
   {
     icon: Sparkle,
     title: 'Early User Benefits',
     description: 'Earn badges, DAO voting rights, and identity rewards from day one.',
-    color: 'from-violet-500 to-indigo-400',
+    // color: 'from-violet-500 to-indigo-400',
   },
   {
     icon: RocketLaunch,
     title: 'Fast-Track Utility',
     description: 'Unlock features, mint credentials, and start building reputation early.',
-    color: 'from-teal-500 to-cyan-400',
+    // color: 'from-teal-500 to-cyan-400',
   },
 ];
 
@@ -83,14 +83,14 @@ const EarlyAccess = () => {
               className="p-8 glass-card rounded-2xl relative overflow-hidden group"
             >
               {/* Glow Effect */}
-              <div className={`absolute -top-5 -left-5 w-24 h-24 bg-gradient-to-br ${perk.color} blur-3xl opacity-30 group-hover:opacity-50 transition duration-500`} />
+              <div className={`absolute -top-5 -left-5 w-24 h-24 bg-gradient-to-br blur-3xl opacity-30 group-hover:opacity-50 transition duration-500`} />
 
               {/* Icon */}
               <motion.div
-                className={`w-16 h-16 rounded-xl bg-gradient-to-br ${perk.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                className={`w-16 h-16 rounded-xl bg-gradient-to-br flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                 whileHover={{ rotate: 8 }}
               >
-                <perk.icon size={30} weight="light" className="text-white" />
+                <perk.icon size={28} weight="light" className="w-14 h-14 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 text-primary text-2xl" />
               </motion.div>
 
               {/* Title */}
@@ -111,7 +111,7 @@ const EarlyAccess = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 + 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className={`h-full bg-gradient-to-r ${perk.color} rounded-full`} />
+                <div className={`h-full bg-gradient-to-r rounded-full`} />
               </motion.div>
             </motion.div>
           ))}

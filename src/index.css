@@ -17,14 +17,18 @@
     --glass-foreground: 210 40% 95%;
     
     /* Primary brand colors - Purple/Blue gradient theme */
-    --primary: 250 84% 70%;
-    --primary-dark: 245 75% 45%;
+    --primary: 174 100% 39%;
+    --primary-dark: 174 100% 29%;
     --primary-foreground: 210 40% 98%;
-    --primary-glow: 250 100% 85%;
+    --primary-glow: 174 100% 65%;
+    
     
     /* Secondary colors */
-    --secondary: 220 25% 20%;
+    --secondary: 174 100% 39%;
+    --secondary-dark: 174 100% 29%;
     --secondary-foreground: 210 40% 95%;
+    --secondary-glow: 174 100% 65%;
+    
     
     /* Accent colors */
     --accent: 270 75% 65%;
@@ -51,9 +55,10 @@
     --radius: 1rem;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(250 84% 70%), hsl(270 75% 65%));
+    --gradient-primary: linear-gradient(135deg, hsl(174 100% 39%), hsl(174 100% 29%));
     --gradient-dark: linear-gradient(135deg, hsl(220 20% 8%), hsl(220 25% 12%));
     --gradient-glass: linear-gradient(135deg, hsl(220 20% 15% / 0.8), hsl(220 25% 20% / 0.6));
+    
     
     /* Shadows */
     --shadow-glow: 0 0 40px hsl(250 84% 70% / 0.3);

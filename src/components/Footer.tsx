@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TwitterLogo, LinkedinLogo, GithubLogo, DiscordLogo } from 'phosphor-react';
+import { TwitterLogo, LinkedinLogo, DiscordLogo, TelegramLogo } from 'phosphor-react';
 
 const Footer = () => {
   const footerLinks = {
@@ -11,10 +11,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: TwitterLogo, href: '#', label: 'Twitter' },
+    { icon: TwitterLogo, href: 'https://x.com/nullproof_xyz', label: 'Twitter' },
     { icon: LinkedinLogo, href: '#', label: 'LinkedIn' },
-    { icon: GithubLogo, href: '#', label: 'GitHub' },
-    { icon: DiscordLogo, href: '#', label: 'Discord' }
+    { icon: TelegramLogo, href: 'https://t.me/nullproof', label: 'Telegram' },
+    { icon: DiscordLogo, href: 'https://discord.gg/HZeURkzc', label: 'Discord' }
   ];
 
   return (

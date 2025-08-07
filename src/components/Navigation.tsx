@@ -12,18 +12,11 @@ const Navigation = () => {
 
   // Homepage anchor links
   const homeNavItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Whitepaper', href: '/whitepaper' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Roadmap', href: '#roadmap' },
+    { name: 'Home', href: '/' },
+    { name: 'Whitepaper', href: '/NullProof_Whitepaper.pdf', external: true }, 
+    { name: 'Early Access', href: '/early-access' }
   ];
 
-  // Other pages navigation
-  // const pageNavItems = [
-  //   { name: 'Home', href: '/' },
-  //   { name: 'About', href: '/about' },
-  //   { name: 'Contact', href: '/contact' }
-  // ];
 
   const navItems = isHomePage ? homeNavItems : []
 
@@ -36,23 +29,26 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (item: { href: string; external?: boolean }) => {
     setIsOpen(false);
-    
-    if (isHomePage && href.startsWith('#')) {
-      // Handle anchor links on homepage
-      const element = document.querySelector(href);
+  
+    if (item.external) {
+      window.open(item.href, '_blank');
+      return;
+    }
+  
+    if (isHomePage && item.href.startsWith('#')) {
+      const element = document.querySelector(item.href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
-    } else if (href.startsWith('/')) {
-      // Handle page navigation
-      navigate(href);
+    } else if (item.href.startsWith('/')) {
+      navigate(item.href);
     } else {
-      // Handle anchor links from other pages - navigate to homepage first
-      navigate('/' + href);
+      navigate('/' + item.href);
     }
   };
+  
 
   return (
     <>
@@ -71,10 +67,15 @@ const Navigation = () => {
             {/* Logo */}
             <motion.button
               onClick={() => navigate('/')}
-              className="text-2xl font-semibold gradient-text tracking-tight"
+              className="flex items-center text-2xl font-semibold gradient-text tracking-tight"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
+              <img
+                src="/logo.png"
+                alt="Nullproof Logo"
+                className="w-8 h-8 mr-2 rounded-full object-cover"
+              />
               Nullproof
             </motion.button>
 
@@ -83,7 +84,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <motion.button
                   key={item.name}
-                  onClick={() => handleNavClick(item.href)}
+                  onClick={() => handleNavClick(item)}
                   className="text-foreground/80 hover:text-primary transition-colors duration-300 font-light tracking-tight"
                   whileHover={{ y: -2 }}
                   transition={{ type: "spring", stiffness: 400 }}
@@ -132,7 +133,7 @@ const Navigation = () => {
                   {navItems.map((item, index) => (
                     <motion.button
                       key={item.name}
-                      onClick={() => handleNavClick(item.href)}
+                      onClick={() => handleNavClick(item)}
                       className="text-left text-xl text-foreground/80 hover:text-primary transition-colors duration-300 font-light tracking-tight"
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}

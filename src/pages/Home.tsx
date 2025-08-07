@@ -4,8 +4,9 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import Testimonials from '../components/Testimonials';
 import HowItWorks from '../components/HowItWorks';
-import Features from '../components/Features';
+import EarlyAccess from '../components/EarlyAccess';
 import Roadmap from '../components/Roadmap';
+import Tokenomics from '../components/Tokenomics';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -31,7 +32,8 @@ const Home = () => {
         <Hero />
         <Testimonials />
         <HowItWorks />
-        <Features />
+        <EarlyAccess />
+        <Tokenomics />
         <Roadmap />
       </main>
       

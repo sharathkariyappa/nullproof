@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { saveUser } from '@/hooks/saveUser';
+import LaunchCountdown from '@/components/LaunchCountdow';
 
 const EarlyAccess = () => {
   const [form, setForm] = useState({
@@ -13,15 +15,18 @@ const EarlyAccess = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: send form data to backend or store
-    console.log(form);
-    setSubmitted(true);
+  const handleSubmit = async () => {
+    try {
+      await saveUser(form.name, form.email, form.wallet);
+      setSubmitted(true);
+    } catch (err) {
+      console.error('❌ Failed to save user:', err);
+    }
   };
-
+  
+  
   return (
-    <section className="py-20 flex flex-col items-center justify-center text-center px-4">
+    <section className="py-20 min-h-screen flex flex-col items-center justify-center bg-background-secondary text-center px-4">
       <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-4">
         Get <span className="gradient-text">Early Access</span>
       </h2>
@@ -32,7 +37,13 @@ const EarlyAccess = () => {
 
       <div className="max-w-md w-full p-6 border rounded-2xl shadow-sm flex flex-col gap-4 items-center">
         {!submitted ? (
-          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
+          <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+          className="w-full flex flex-col gap-4"
+          >
             <input
               type="text"
               name="name"
@@ -71,9 +82,8 @@ const EarlyAccess = () => {
             </button>
           </form>
         ) : (
-          <p className="text-sm text-muted-foreground">
-            Thanks for joining! We'll notify you with updates.
-          </p>
+          <LaunchCountdown />
+
         )}
       </div>
     </section>
