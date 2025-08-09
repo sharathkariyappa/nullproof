@@ -18,7 +18,7 @@ Powered by AI/ML and Zero-Knowledge Proofs, Nullproof leverages both **on-chain*
 | **ZK Proofs**    | Circom + SnarkJS           |
 | **Blockchain**   | ethers.js + Infura/Alchemy |
 | **Identity**     | ethrDID                    |
-| **VC Storage**   | Ceramic (DID-based)        |
+| **VC Storage**   | IPFS                       |
 
 ---
 
@@ -28,7 +28,7 @@ Powered by AI/ML and Zero-Knowledge Proofs, Nullproof leverages both **on-chain*
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/nullproof.git
+git clone https://github.com/sharathkariyappa/nullproof.git
 
 # 2. Navigate to the frontend
 cd nullproof/client

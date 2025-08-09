@@ -67,7 +67,7 @@ const Navigation = () => {
             {/* Logo */}
             <motion.button
               onClick={() => navigate('/')}
-              className="flex items-center text-2xl font-semibold gradient-text tracking-tight"
+              className="flex items-center text-2xl font-semibold text-primary tracking-tight"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
